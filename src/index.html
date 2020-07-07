@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS List Framework</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        CSS List Framework
+      </h1>
+
+      <label>
+        <input type="checkbox" id="highlight" checked> Highlight element background
+      </label>
+
+      <nav>
+        <a href="https://github.com/shikakun/css-list-framework/blob/master/src/styles/_list.scss" target="_blank" rel="noopener noreferrer">Sass code</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>
+        Default
+      </h2>
+
+      <ul class="list">
+        <li class="item">First Item, Single-line</li>
+        <li class="item">Second Item, Single-line</li>
+        <li class="item">Third Item,<br>Two-line</li>
+      </ul>
+
+      <textarea readonly>
+<ul class="list">
+  <li class="item">First Item, Single-line</li>
+  <li class="item">Second Item, Single-line</li>
+  <li class="item">Third Item,<br>Two-line</li>
+</ul></textarea>
+    </section>
+
+    <section>
+      <h2>
+        Bullet List
+      </h2>
+
+      <ul class="list -bullet">
+        <li class="item">First Item, Single-line</li>
+        <li class="item">Second Item, Single-line</li>
+        <li class="item">Third Item,<br>Two-line</li>
+      </ul>
+
+      <textarea readonly>
+<ul class="list -bullet">
+  <li class="item">First Item, Single-line</li>
+  <li class="item">Second Item, Single-line</li>
+  <li class="item">Third Item,<br>Two-line</li>
+</ul></textarea>
+    </section>
+
+    <section>
+      <h2>
+        Ordered List
+      </h2>
+
+      <ol class="list -ordered">
+        <li class="item">First Item, Single-line</li>
+        <li class="item">Second Item, Single-line</li>
+        <li class="item">Third Item, Single-line</li>
+        <li class="item">Fourth Item, Single-line</li>
+        <li class="item">Fifth Item, Single-line</li>
+        <li class="item">Sixth Item, Single-line</li>
+        <li class="item">Seventh Item, Single-line</li>
+        <li class="item">Eighth Item, Single-line</li>
+        <li class="item">Ninth Item, Single-line</li>
+        <li class="item">Tenth Item,<br>Two-line</li>
+      </ol>
+
+      <textarea readonly>
+<ol class="list -ordered">
+  <li class="item">First Item, Single-line</li>
+  <li class="item">Second Item, Single-line</li>
+  <li class="item">Third Item, Single-line</li>
+  <li class="item">Fourth Item, Single-line</li>
+  <li class="item">Fifth Item, Single-line</li>
+  <li class="item">Sixth Item, Single-line</li>
+  <li class="item">Seventh Item, Single-line</li>
+  <li class="item">Eighth Item, Single-line</li>
+  <li class="item">Ninth Item, Single-line</li>
+  <li class="item">Tenth Item,<br>Two-line</li>
+</ol></textarea>
+    </section>
+
+    <section>
+      <h2>
+        Bullet List with Material Icons
+      </h2>
+
+      <ul class="list -icon">
+        <li class="item"><i class="icon">event</i>First Item, Single-line</li>
+        <li class="item"><i class="icon">call</i>Second Item, Single-line</li>
+        <li class="item -bullet">Third Item,<br>Two-line</li>
+      </ul>
+
+      <textarea readonly>
+<ul class="list -icon">
+  <li class="item"><i class="icon">event</i>First Item, Single-line</li>
+  <li class="item"><i class="icon">call</i>Second Item, Single-line</li>
+  <li class="item -bullet">Third Item,<br>Two-line</li>
+</ul></textarea>
+    </section>
+
+    <section>
+      <h2>
+        Dense
+      </h2>
+
+      <ul class="list -dense">
+        <li class="item">First Item, Single-line</li>
+        <li class="item">Second Item, Single-line</li>
+        <li class="item">Third Item,<br>Two-line</li>
+      </ul>
+
+      <textarea readonly>
+<ul class="list -dense">
+  <li class="item">First Item, Single-line</li>
+  <li class="item">Second Item, Single-line</li>
+  <li class="item">Third Item,<br>Two-line</li>
+</ul></textarea>
+
+      <ul class="list -bullet -dense">
+        <li class="item">First Item, Single-line</li>
+        <li class="item">Second Item, Single-line</li>
+        <li class="item">Third Item,<br>Two-line</li>
+      </ul>
+
+      <textarea readonly>
+<ul class="list -bullet -dense">
+<li class="item">First Item, Single-line</li>
+<li class="item">Second Item, Single-line</li>
+<li class="item">Third Item,<br>Two-line</li>
+</ul></textarea>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
