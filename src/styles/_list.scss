@@ -8,28 +8,66 @@ $list-indent-size-dense: 2rem !default;
 $list-icon-font-family: 'Material Icons' !default;
 
 // Mixins
-@mixin bullet-item($dense: false) {
+@mixin bullet-item($bullet-type, $spacing: normal) {
   position: relative;
   padding-left: $list-indent-size-normal;
-  @if $dense {
+  @if $spacing == dense {
     padding-left: $list-indent-size-dense;
   }
 
-  &::before {
-    display: block;
+  &::before,
+  &::after {
+    display: none;
     position: absolute;
     top: ($list-line-height / 2);
     left: 0;
     min-width: $list-line-height;
     max-width: $list-indent-size-normal;
     height: $list-line-height;
+    @if $spacing == dense {
+      top: ($list-line-height / 4);
+      max-width: $list-indent-size-dense;
+    }
+  }
+
+  &::before {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @if $dense {
-      top: ($list-line-height / 4);
-      max-width: $list-indent-size-dense;
+
+    @if $bullet-type == text {
+      display: block;
+    }
+  }
+
+  &::after {
+    justify-content: center;
+    align-items: center;
+    font-size: $list-line-height;
+
+    // Material Icons CSS
+    font-weight: normal;
+    font-family: $list-icon-font-family;
+    font-style: normal;
+    line-height: 1;
+    direction: ltr;
+    letter-spacing: normal;
+    white-space: nowrap;
+    text-transform: none;
+    word-wrap: normal;
+
+    // Support for all WebKit browsers.
+    -webkit-font-smoothing: antialiased;
+    // Support for Safari and Chrome.
+    text-rendering: optimizeLegibility;
+    // Support for Firefox.
+    -moz-osx-font-smoothing: grayscale;
+    // Support for IE.
+    font-feature-settings: 'liga';
+
+    @if $bullet-type == icon {
+      display: inline-flex;
     }
   }
 }
@@ -58,15 +96,15 @@ $list-icon-font-family: 'Material Icons' !default;
 
 .list.-bullet {
   .item {
-    @include bullet-item;
+    @include bullet-item(text, normal);
 
     &::before {
-      content: '\02022';
+      content: '\02022';// \02022 = • ( &#8226; / &bull; )
     }
   }
 
   &.-dense .item {
-    @include bullet-item($dense: true);
+    @include bullet-item(text, dense);
   }
 }
 
@@ -74,7 +112,7 @@ $list-icon-font-family: 'Material Icons' !default;
   counter-reset: item;
 
   .item {
-    @include bullet-item;
+    @include bullet-item(text, normal);
 
     &::before {
       counter-increment: item;
@@ -83,56 +121,41 @@ $list-icon-font-family: 'Material Icons' !default;
   }
 
   &.-dense .item {
-    @include bullet-item($dense: true);
+    @include bullet-item(text, dense);
   }
 }
 
 .list.-icon {
   .item {
-    @include bullet-item;
+    @include bullet-item(icon, normal);
 
-    &.-bullet::before {
-      content: '\02022';
+    &::after {
+      content: attr(data-icon);
+    }
+
+    &.-bullet {
+      &::before {
+        display: block;
+        content: '\02022';// \02022 = • ( &#8226; / &bull; )
+      }
+
+      &::after {
+        display: none;
+      }
     }
   }
 
   &.-dense .item {
-    @include bullet-item($dense: true);
-  }
+    @include bullet-item(icon, dense);
 
-  .icon {
-    position: absolute;
-    top: ($list-line-height / 2);
-    left: 0;
-    width: $list-line-height;
-    height: $list-line-height;
-    font-size: $list-line-height;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    &.-bullet {
+      &::before {
+        display: block;
+      }
 
-    // Material Icons CSS
-    font-weight: normal;
-    font-family: $list-icon-font-family;
-    font-style: normal;
-    line-height: 1;
-    direction: ltr;
-    letter-spacing: normal;
-    white-space: nowrap;
-    text-transform: none;
-    word-wrap: normal;
-
-    // Support for all WebKit browsers.
-    -webkit-font-smoothing: antialiased;
-    // Support for Safari and Chrome.
-    text-rendering: optimizeLegibility;
-    // Support for Firefox.
-    -moz-osx-font-smoothing: grayscale;
-    // Support for IE.
-    font-feature-settings: 'liga';
-  }
-
-  &.-dense .icon {
-    top: ($list-line-height / 4);
+      &::after {
+        display: none;
+      }
+    }
   }
 }

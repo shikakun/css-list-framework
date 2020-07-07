@@ -82,7 +82,7 @@ textarea + .list {
     }
 
     &::before,
-    .icon {
+    &::after {
       background: rgba(#fff, 0.5);
     }
   }

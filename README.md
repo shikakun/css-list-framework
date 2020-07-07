@@ -8,7 +8,7 @@
 ```html
 <ul class="list">
   <li class="item">content</div>
-  <li class="item"><i class="icon">icon-name</icon>content</div>
+  <li class="item">content</div>
 </li>
 ```
 
@@ -17,4 +17,3 @@
     - `.-dense`
 - `.item`
     - `.-bullet` (require `.list.-icon`)
-- `.icon`
