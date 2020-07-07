@@ -35,7 +35,6 @@ $list-icon-font-family: 'Material Icons' !default;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
     @if $bullet-type == text {
       display: block;
     }
@@ -45,8 +44,6 @@ $list-icon-font-family: 'Material Icons' !default;
     justify-content: center;
     align-items: center;
     font-size: $list-line-height;
-
-    // Material Icons CSS
     font-weight: normal;
     font-family: $list-icon-font-family;
     font-style: normal;
@@ -56,16 +53,10 @@ $list-icon-font-family: 'Material Icons' !default;
     white-space: nowrap;
     text-transform: none;
     word-wrap: normal;
-
-    // Support for all WebKit browsers.
     -webkit-font-smoothing: antialiased;
-    // Support for Safari and Chrome.
     text-rendering: optimizeLegibility;
-    // Support for Firefox.
     -moz-osx-font-smoothing: grayscale;
-    // Support for IE.
     font-feature-settings: 'liga';
-
     @if $bullet-type == icon {
       display: inline-flex;
     }
