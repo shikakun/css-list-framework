@@ -63,6 +63,15 @@ $list-icon-font-family: 'Material Icons' !default;
   }
 }
 
+@mixin hide-bullet {
+  padding-left: 0;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
 // Assign
 .list {
   padding: ($list-line-height / 2) 0;
@@ -78,11 +87,29 @@ $list-icon-font-family: 'Material Icons' !default;
   padding: ($list-line-height / 2) 0;
   font-size: $list-font-size;
   line-height: $list-line-height;
+
+  &.-no-bullet {
+    @include hide-bullet;
+  }
 }
 
 .list.-dense .item {
   padding-top: ($list-line-height / 4);
   padding-bottom: ($list-line-height / 4);
+}
+
+.item .list {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: - ($list-line-height / 2);
+  margin-bottom: - ($list-line-height / 2);
+  margin-left: $list-indent-size-normal;
+}
+
+.list.-dense .item .list {
+  margin-top: - ($list-line-height / 4);
+  margin-bottom: - ($list-line-height / 4);
+  margin-left: $list-indent-size-dense;
 }
 
 .list.-bullet {
@@ -92,10 +119,18 @@ $list-icon-font-family: 'Material Icons' !default;
     &::before {
       content: '\02022';// \02022 = • ( &#8226; / &bull; )
     }
+
+    &.-no-bullet {
+      @include hide-bullet;
+    }
   }
 
   &.-dense .item {
     @include bullet-item(text, dense);
+
+    &.-no-bullet {
+      @include hide-bullet;
+    }
   }
 
   // Icon
@@ -122,10 +157,18 @@ $list-icon-font-family: 'Material Icons' !default;
       counter-increment: item;
       content: counter(item)'.';
     }
+
+    &.-no-bullet {
+      @include hide-bullet;
+    }
   }
 
   &.-dense .item {
     @include bullet-item(text, dense);
+
+    &.-no-bullet {
+      @include hide-bullet;
+    }
   }
 
   // Icon
@@ -140,4 +183,20 @@ $list-icon-font-family: 'Material Icons' !default;
   &.-dense .item.-icon {
     @include bullet-item(icon, dense);
   }
+}
+
+.list.-no-bullet .item,
+.list.-bullet.-dense .list.-no-bullet .item,
+.list.-ordered.-dense .list.-no-bullet .item {
+  @include hide-bullet;
+}
+
+.list.-bullet > .item > .list.-no-bullet,
+.list.-ordered > .item > .list.-no-bullet {
+  padding-left: $list-indent-size-normal;
+}
+
+.list.-bullet.-dense .item > .list.-no-bullet,
+.list.-ordered.-dense .item > .list.-no-bullet {
+  padding-left: $list-indent-size-dense;
 }
