@@ -56,15 +56,17 @@ $list-icon-font-family: 'Material Icons' !default;
   padding-bottom: ($list-line-height / 4);
 }
 
-.list.-bullet .item {
-  @include bullet-item;
+.list.-bullet {
+  .item {
+    @include bullet-item;
 
-  &.-dense {
-    @include bullet-item($dense: true);
+    &::before {
+      content: '\02022';
+    }
   }
 
-  &::before {
-    content: '\02022';
+  &.-dense .item {
+    @include bullet-item($dense: true);
   }
 }
 
@@ -74,39 +76,40 @@ $list-icon-font-family: 'Material Icons' !default;
   .item {
     @include bullet-item;
 
-    &.-dense {
-      @include bullet-item($dense: true);
-    }
-
     &::before {
       counter-increment: item;
       content: counter(item)'.';
     }
   }
-}
 
-.list.-icon .item {
-  @include bullet-item;
-
-  &.-dense {
+  &.-dense .item {
     @include bullet-item($dense: true);
   }
+}
 
-  &.-bullet::before {
-    content: '\02022';
+.list.-icon {
+  .item {
+    @include bullet-item;
+
+    &.-bullet::before {
+      content: '\02022';
+    }
+  }
+
+  &.-dense .item {
+    @include bullet-item($dense: true);
   }
 
   .icon {
     position: absolute;
     top: ($list-line-height / 2);
     left: 0;
-    min-width: $list-line-height;
-    max-width: $list-indent-size-normal;
+    width: $list-line-height;
     height: $list-line-height;
+    font-size: $list-line-height;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: $list-line-height;
 
     // Material Icons CSS
     font-weight: normal;
@@ -127,5 +130,9 @@ $list-icon-font-family: 'Material Icons' !default;
     -moz-osx-font-smoothing: grayscale;
     // Support for IE.
     font-feature-settings: 'liga';
+  }
+
+  &.-dense .icon {
+    top: ($list-line-height / 4);
   }
 }
