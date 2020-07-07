@@ -3,7 +3,7 @@
 - [Sass code](https://github.com/shikakun/css-list-framework/blob/master/src/styles/_list.scss)
 - [Demo page](https://shikakun.github.com/css-list-framework/)
 
-## CSS classes
+## CSS classes & HTML attributes
 
 ```html
 <ul class="list">
@@ -13,7 +13,7 @@
 ```
 
 - `.list`
-    - `.-bullet` | `.-ordered` | `.-icon`
+    - `.-bullet` || `.-ordered`
     - `.-dense`
 - `.item`
-    - `.-bullet` (require `.list.-icon`)
+    - `.-icon` && `data-icon`

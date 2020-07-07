@@ -97,6 +97,19 @@ $list-icon-font-family: 'Material Icons' !default;
   &.-dense .item {
     @include bullet-item(text, dense);
   }
+
+  // Icon
+  .item.-icon {
+    @include bullet-item(icon, normal);
+
+    &::after {
+      content: attr(data-icon);
+    }
+  }
+
+  &.-dense .item.-icon {
+    @include bullet-item(icon, dense);
+  }
 }
 
 .list.-ordered {
@@ -114,39 +127,17 @@ $list-icon-font-family: 'Material Icons' !default;
   &.-dense .item {
     @include bullet-item(text, dense);
   }
-}
 
-.list.-icon {
-  .item {
+  // Icon
+  .item.-icon {
     @include bullet-item(icon, normal);
 
     &::after {
       content: attr(data-icon);
     }
-
-    &.-bullet {
-      &::before {
-        display: block;
-        content: '\02022';// \02022 = • ( &#8226; / &bull; )
-      }
-
-      &::after {
-        display: none;
-      }
-    }
   }
 
-  &.-dense .item {
+  &.-dense .item.-icon {
     @include bullet-item(icon, dense);
-
-    &.-bullet {
-      &::before {
-        display: block;
-      }
-
-      &::after {
-        display: none;
-      }
-    }
   }
 }
