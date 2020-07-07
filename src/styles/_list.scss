@@ -38,6 +38,11 @@ $list-icon-font-family: 'Material Icons' !default;
 .list {
   padding: ($list-line-height / 2) 0;
   list-style: none;
+
+  &.-dense {
+    padding-top: ($list-line-height / 4);
+    padding-bottom: ($list-line-height / 4);
+  }
 }
 
 .item {
@@ -46,8 +51,17 @@ $list-icon-font-family: 'Material Icons' !default;
   line-height: $list-line-height;
 }
 
+.list.-dense .item {
+  padding-top: ($list-line-height / 4);
+  padding-bottom: ($list-line-height / 4);
+}
+
 .list.-bullet .item {
   @include bullet-item;
+
+  &.-dense {
+    @include bullet-item($dense: true);
+  }
 
   &::before {
     content: '\02022';
@@ -60,6 +74,10 @@ $list-icon-font-family: 'Material Icons' !default;
   .item {
     @include bullet-item;
 
+    &.-dense {
+      @include bullet-item($dense: true);
+    }
+
     &::before {
       counter-increment: item;
       content: counter(item)'.';
@@ -69,6 +87,10 @@ $list-icon-font-family: 'Material Icons' !default;
 
 .list.-icon .item {
   @include bullet-item;
+
+  &.-dense {
+    @include bullet-item($dense: true);
+  }
 
   &.-bullet::before {
     content: '\02022';
@@ -105,21 +127,5 @@ $list-icon-font-family: 'Material Icons' !default;
     -moz-osx-font-smoothing: grayscale;
     // Support for IE.
     font-feature-settings: 'liga';
-  }
-}
-
-.list.-dense {
-  padding-top: ($list-line-height / 4);
-  padding-bottom: ($list-line-height / 4);
-
-  .item {
-    padding-top: ($list-line-height / 4);
-    padding-bottom: ($list-line-height / 4);
-  }
-
-  &.-bullet .item,
-  &.-ordered .item,
-  &.-icon .item {
-    @include bullet-item($dense: true);
   }
 }
